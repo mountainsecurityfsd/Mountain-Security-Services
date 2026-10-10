@@ -94,13 +94,19 @@ Run the test suite:
 npm run test
 ```
 
-### 4. Production Build
+### 4. Production Build & GitHub Pages
 Verify TypeScript compilation and create the optimized production build:
 ```bash
 npm run build
 ```
 
-The output will be generated inside the `dist/` directory.
+The output will be generated inside the `dist/` directory with `base: '/Mountain-Security-Services/'`.
+
+### 5. GitHub Pages Deployment
+1. Under **Settings > Pages** on GitHub:
+   - Source: **GitHub Actions**
+2. Push your changes to `main` (or `master`).
+3. The automated workflow `.github/workflows/deploy.yml` will run tests, build the bundle, and deploy to `https://mountainsecurityfsd.github.io/Mountain-Security-Services/`.
 
 ---
 
