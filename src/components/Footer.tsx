@@ -29,10 +29,24 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate, language }) => {
             <p className="font-body-sm text-body-sm text-on-surface-variant">
               Premier licensed corporate security guarding &amp; skilled workforce placement across Faisalabad and regional industrial corridors.
             </p>
-            <div className="flex flex-col gap-1 font-body-sm text-body-sm text-on-surface-variant">
+            <div className="flex flex-col gap-1.5 font-body-sm text-body-sm text-on-surface-variant">
               <span className="font-label-sm text-label-sm uppercase text-secondary font-bold">Registered Headquarters</span>
-              <span>2nd Floor, Arshad Center, near General Bus Stand, Faisalabad, Pakistan</span>
-              <span>Hours: 24/7 Operations Command &amp; Dispatch</span>
+              <a
+                href="https://maps.app.goo.gl/dYzoczkhh3AJ6em18"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group inline-flex items-start gap-1.5 text-on-surface hover:text-secondary transition-colors cursor-pointer py-0.5"
+                title="View Mountain Security Services location on Google Maps (opens in new tab)"
+                aria-label="View office location at Arshad Center on Google Maps (opens in new tab)"
+              >
+                <span className="material-symbols-outlined text-[18px] text-secondary shrink-0 mt-0.5 group-hover:scale-110 transition-transform">
+                  location_on
+                </span>
+                <span className="group-hover:underline underline-offset-2">
+                  2nd Floor, Arshad Center, Near General Bus Stand, Faisalabad, Pakistan
+                </span>
+              </a>
+              <span className="text-xs text-on-surface-variant/80">Hours: 24/7 Operations Command &amp; Dispatch</span>
             </div>
           </div>
 

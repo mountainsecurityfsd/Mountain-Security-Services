@@ -920,7 +920,16 @@ export const HireStaffPage: React.FC<HireStaffPageProps> = ({ onNavigate, langua
                   Call Our Faisalabad Operations Desk Directly
                 </h3>
                 <p className="text-xs sm:text-sm text-slate-300 leading-relaxed">
-                  Immediate dispatch consultation available 24 hours a day, 7 days a week. Headquarters stationed at 2nd Floor, Arshad Center, near General Bus Stand, Faisalabad.
+                  Immediate dispatch consultation available 24 hours a day, 7 days a week. Headquarters stationed at{' '}
+                  <a
+                    href="https://maps.app.goo.gl/dYzoczkhh3AJ6em18"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-[#00b4d8] hover:text-white underline underline-offset-2 transition-colors inline-flex items-center gap-0.5"
+                    title="View headquarters on Google Maps (opens in new tab)"
+                  >
+                    <span>2nd Floor, Arshad Center, Near General Bus Stand, Faisalabad</span>
+                  </a>.
                 </p>
               </div>
 

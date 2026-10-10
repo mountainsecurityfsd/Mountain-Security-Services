@@ -33,10 +33,21 @@ export const Header: React.FC<HeaderProps> = ({
       <div className="bg-primary-container text-on-primary border-b border-outline/20">
         <div className="max-w-7xl mx-auto px-margin-mobile lg:px-margin h-10 flex items-center justify-between font-label-md text-label-md">
           <div className="flex items-center gap-space-lg overflow-x-auto py-1">
-            <div className="hidden md:flex items-center gap-space-xs text-on-primary-container">
-              <span className="material-symbols-outlined text-[16px] text-secondary-container">location_on</span>
-              <span>2nd Floor, Arshad Center, near General Bus Stand, Faisalabad</span>
-            </div>
+            <a
+              href="https://maps.app.goo.gl/dYzoczkhh3AJ6em18"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hidden md:flex items-center gap-space-xs text-on-primary-container hover:text-secondary-fixed transition-colors cursor-pointer group"
+              title="Open office location on Google Maps (opens in new tab)"
+              aria-label="Open office location on Google Maps (opens in new tab)"
+            >
+              <span className="material-symbols-outlined text-[16px] text-secondary-container group-hover:scale-110 transition-transform">
+                location_on
+              </span>
+              <span className="group-hover:underline underline-offset-2">
+                2nd Floor, Arshad Center, Near General Bus Stand, Faisalabad
+              </span>
+            </a>
 
             <div className="flex items-center gap-space-md text-on-primary">
               <span className="text-on-primary-container hidden sm:inline">Hotlines:</span>

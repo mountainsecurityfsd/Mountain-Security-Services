@@ -11,7 +11,9 @@ import {
   Send, 
   AlertCircle, 
   Loader2, 
-  Shield 
+  Shield,
+  ExternalLink,
+  Navigation
 } from 'lucide-react';
 import { isValidPakistaniPhone, isValidEmail } from '../utils/validation';
 
@@ -122,9 +124,19 @@ export const ContactPage: React.FC<ContactPageProps> = ({
                   </div>
                   <div>
                     <strong className="text-slate-900 block font-headline text-sm">Physical Headquarters:</strong>
-                    <p className="text-slate-600 mt-0.5 leading-relaxed">
-                      2nd Floor, Arshad Center, near General Bus Stand, Faisalabad, Punjab, Pakistan.
-                    </p>
+                    <a
+                      href="https://maps.app.goo.gl/dYzoczkhh3AJ6em18"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="group inline-flex items-center gap-1.5 text-slate-600 hover:text-[#0077b6] mt-0.5 leading-relaxed transition-colors"
+                      title="Open headquarters in Google Maps (opens in new tab)"
+                      aria-label="Open Mountain Security Services headquarters on Google Maps (opens in new tab)"
+                    >
+                      <span className="group-hover:underline underline-offset-2">
+                        2nd Floor, Arshad Center, Near General Bus Stand, Faisalabad, Pakistan
+                      </span>
+                      <ExternalLink className="w-3.5 h-3.5 text-[#0077b6] shrink-0 opacity-70 group-hover:opacity-100 group-hover:translate-x-0.5 transition-all" />
+                    </a>
                   </div>
                 </div>
 
@@ -204,6 +216,19 @@ export const ContactPage: React.FC<ContactPageProps> = ({
               <p className="text-xs text-slate-300 leading-relaxed mt-2">
                 Situated directly opposite the main General Bus Stand commercial corridor on 2nd Floor, Arshad Center. Conveniently accessible from Railway Station, Millat Road, and Canal Expressway.
               </p>
+              <div className="mt-4 pt-3 border-t border-slate-700/60 flex items-center justify-between gap-3">
+                <a
+                  href="https://maps.app.goo.gl/dYzoczkhh3AJ6em18"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-full inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl bg-[#0077b6] hover:bg-[#006399] text-white text-xs font-semibold shadow-md transition-all group"
+                  title="Open exact location in Google Maps (opens in new tab)"
+                >
+                  <MapPin className="w-4 h-4 text-[#00b4d8] group-hover:scale-110 transition-transform" />
+                  <span>Open in Google Maps</span>
+                  <ExternalLink className="w-3.5 h-3.5 opacity-80" />
+                </a>
+              </div>
             </div>
           </div>
 

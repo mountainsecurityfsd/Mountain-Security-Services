@@ -12,7 +12,8 @@ import {
   Users, 
   FileCheck, 
   Eye, 
-  ArrowRight 
+  ArrowRight,
+  ExternalLink
 } from 'lucide-react';
 
 interface AboutPageProps {
@@ -101,13 +102,24 @@ export const AboutPage: React.FC<AboutPageProps> = ({ onNavigate, language }) =>
                 alt="Security Officer on Duty"
                 className="w-full h-96 object-cover object-top"
               />
-              <div className="p-5 bg-[#0b132b] text-white flex flex-col gap-1">
+              <div className="p-5 bg-[#0b132b] text-white flex flex-col gap-1.5">
                 <span className="text-[11px] font-bold uppercase tracking-wider text-[#00b4d8]">
                   Headquarters Command
                 </span>
-                <p className="text-xs text-slate-300">
-                  2nd Floor, Arshad Center, near General Bus Stand, Faisalabad, Punjab, Pakistan.
-                </p>
+                <a
+                  href="https://maps.app.goo.gl/dYzoczkhh3AJ6em18"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-xs text-slate-300 hover:text-[#00b4d8] transition-colors inline-flex items-center gap-1.5 group cursor-pointer"
+                  title="View headquarters on Google Maps (opens in new tab)"
+                  aria-label="View headquarters on Google Maps (opens in new tab)"
+                >
+                  <MapPin className="w-3.5 h-3.5 text-[#00b4d8] group-hover:scale-110 transition-transform shrink-0" />
+                  <span className="group-hover:underline underline-offset-2">
+                    2nd Floor, Arshad Center, Near General Bus Stand, Faisalabad, Pakistan
+                  </span>
+                  <ExternalLink className="w-3 h-3 text-[#00b4d8] opacity-70 group-hover:opacity-100 shrink-0" />
+                </a>
               </div>
             </div>
           </div>

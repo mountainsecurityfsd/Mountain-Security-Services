@@ -21,7 +21,8 @@ import {
   Star,
   Send,
   Loader2,
-  AlertCircle
+  AlertCircle,
+  ExternalLink
 } from 'lucide-react';
 import { isValidPakistaniPhone } from '../utils/validation';
 import { OwnersHeroShowcase } from '../components/OwnersHeroShowcase';
@@ -736,9 +737,17 @@ export const HomePage: React.FC<HomePageProps> = ({
               >
                 {t.portals.workerBtn}
               </button>
-              <span className="text-xs text-slate-600">
-                Walk-ins: Arshad Center, Faisalabad
-              </span>
+              <a
+                href="https://maps.app.goo.gl/dYzoczkhh3AJ6em18"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-xs text-slate-600 hover:text-[#0077b6] inline-flex items-center gap-1 transition-colors group cursor-pointer"
+                title="View office location on Google Maps (opens in new tab)"
+                aria-label="View Walk-in office at Arshad Center on Google Maps (opens in new tab)"
+              >
+                <MapPin className="w-3.5 h-3.5 text-[#0077b6] group-hover:scale-110 transition-transform shrink-0" />
+                <span>Walk-ins: <span className="underline decoration-slate-300 group-hover:decoration-[#0077b6]">Arshad Center, Faisalabad</span></span>
+              </a>
             </div>
           </div>
         </div>
@@ -885,9 +894,19 @@ export const HomePage: React.FC<HomePageProps> = ({
               <div className="flex flex-col gap-3 pt-2 text-xs sm:text-sm">
                 <div className="flex items-start gap-3">
                   <MapPin className="w-5 h-5 text-[#00b4d8] shrink-0 mt-0.5" />
-                  <span className="text-slate-200">
-                    Second Floor, Arshad Center, near General Bus Stand, Faisalabad, Pakistan
-                  </span>
+                  <a
+                    href="https://maps.app.goo.gl/dYzoczkhh3AJ6em18"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-slate-200 hover:text-[#00b4d8] transition-colors inline-flex items-center gap-1.5 group cursor-pointer"
+                    title="Open office address on Google Maps (opens in new tab)"
+                    aria-label="View Mountain Security Services headquarters on Google Maps (opens in new tab)"
+                  >
+                    <span className="group-hover:underline underline-offset-2">
+                      2nd Floor, Arshad Center, Near General Bus Stand, Faisalabad, Pakistan
+                    </span>
+                    <ExternalLink className="w-3.5 h-3.5 text-[#00b4d8] shrink-0 opacity-70 group-hover:opacity-100 group-hover:translate-x-0.5 transition-all" />
+                  </a>
                 </div>
                 <div className="flex items-center gap-3">
                   <Phone className="w-5 h-5 text-[#00b4d8] shrink-0" />

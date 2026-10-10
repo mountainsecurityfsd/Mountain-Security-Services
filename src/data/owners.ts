@@ -55,11 +55,24 @@ export const COMPANY_OWNERS: CompanyOwner[] = [
   }
 ];
 
+/**
+ * Official Google Maps location for Mountain Security Services (Pvt) Ltd
+ * Link: https://maps.app.goo.gl/dYzoczkhh3AJ6em18
+ */
+export const GOOGLE_MAPS_OFFICE_URL = 'https://maps.app.goo.gl/dYzoczkhh3AJ6em18';
+
+export const OFFICIAL_OFFICE_ADDRESS = '2nd Floor, Arshad Center, Near General Bus Stand, Faisalabad, Pakistan';
+export const OFFICIAL_OFFICE_ADDRESS_URDU = 'دوسری منزل، ارشد سینٹر، نزد جنرل بس اسٹینڈ، فیصل آباد، پاکستان';
+
 export const COMPANY_PROFILE = {
   legalName: 'Mountain Security Services (Pvt) Ltd',
   legalNameUrdu: 'ماؤنٹین سیکیورٹی سروسز (پرائیویٹ) لمیٹڈ',
   tagline: 'Security You Can Trust',
   taglineUrdu: 'سیکیورٹی جس پر آپ بھروسہ کر سکتے ہیں',
   headquarters: 'Faisalabad, Punjab, Pakistan',
-  headquartersUrdu: 'فیصل آباد، پنجاب، پاکستان'
+  headquartersUrdu: 'فیصل آباد، پنجاب، پاکستان',
+  address: OFFICIAL_OFFICE_ADDRESS,
+  addressUrdu: OFFICIAL_OFFICE_ADDRESS_URDU,
+  googleMapsUrl: GOOGLE_MAPS_OFFICE_URL
 };
+

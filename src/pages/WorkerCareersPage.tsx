@@ -15,7 +15,8 @@ import {
   FileText,
   Clock,
   Sparkles,
-  ArrowRight
+  ArrowRight,
+  ExternalLink
 } from 'lucide-react';
 import { isValidPakistaniPhone, isValidPakistaniCNIC, formatCNIC } from '../utils/validation';
 import { submitCandidateRegistration, CandidateSubmissionResult } from '../services/candidateService';
@@ -460,11 +461,24 @@ export const WorkerCareersPage: React.FC<WorkerCareersPageProps> = ({ onNavigate
               <p className="text-xs text-slate-300 leading-relaxed">
                 You can also visit our physical desk with your documents:
               </p>
-              <div className="text-xs text-[#cde5ff] bg-white/10 p-3 rounded-xl border border-white/10 space-y-1">
-                <div>2nd Floor, Arshad Center</div>
-                <div>near General Bus Stand, Faisalabad</div>
-                <div className="text-[11px] text-slate-300 pt-1">Desk Hours: Mon-Sat, 9AM to 6PM</div>
-              </div>
+              <a
+                href="https://maps.app.goo.gl/dYzoczkhh3AJ6em18"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="block text-xs text-[#cde5ff] hover:text-white bg-white/10 hover:bg-white/15 p-3 rounded-xl border border-white/10 space-y-1 transition-all group cursor-pointer"
+                title="View recruitment desk location on Google Maps (opens in new tab)"
+                aria-label="View recruitment desk on Google Maps (opens in new tab)"
+              >
+                <div className="flex items-center justify-between font-semibold">
+                  <span className="group-hover:underline underline-offset-2">2nd Floor, Arshad Center</span>
+                  <ExternalLink className="w-3.5 h-3.5 text-[#00b4d8] opacity-80 group-hover:opacity-100 transition-opacity" />
+                </div>
+                <div>Near General Bus Stand, Faisalabad</div>
+                <div className="text-[11px] text-slate-300 pt-1 flex items-center gap-1">
+                  <MapPin className="w-3 h-3 text-[#00b4d8] shrink-0" />
+                  <span>Desk Hours: Mon-Sat, 9AM to 6PM • Open Map</span>
+                </div>
+              </a>
               <a
                 href="tel:03299200111"
                 className="mt-2 text-xs font-bold text-[#00b4d8] hover:text-white flex items-center gap-1"
