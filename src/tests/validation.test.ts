@@ -8,6 +8,8 @@ import {
 } from '../utils/validation';
 import { WORKFORCE_CATEGORIES } from '../data/categories';
 import { TRANSLATIONS } from '../data/translations';
+import { submitCandidateRegistration } from '../services/candidateService';
+import { WorkerRegistrationFormData } from '../types';
 
 describe('Pakistani Phone Number Validation', () => {
   it('validates standard 11-digit mobile numbers', () => {
@@ -106,5 +108,36 @@ describe('Workforce Categories & Data Integrity', () => {
     expect(TRANSLATIONS.ur.brandName).toBe('ماؤنٹین سیکیورٹی سروسز');
     expect(TRANSLATIONS.en.address).toContain('Faisalabad');
     expect(TRANSLATIONS.ur.address).toContain('فیصل آباد');
+  });
+});
+
+describe('Candidate Registration Pipeline & WhatsApp Cloud API Security', () => {
+  const sampleCandidate: WorkerRegistrationFormData = {
+    fullName: 'Tariq Mehmood',
+    cnicNumber: '33100-1234567-1',
+    phone: '0300-1234567',
+    whatsappPhone: '0300-1234567',
+    category: 'Security Guards',
+    experienceYears: '3-5 years',
+    cityDistrict: 'Faisalabad',
+    hasPoliceClearance: true,
+    hasWeaponLicense: true,
+    medicalFitnessConfirmed: true,
+    additionalSkills: 'Ex-military, fluent in Urdu and Punjabi'
+  };
+
+  it('generates a valid MSS-REG ticket ID format', async () => {
+    const result = await submitCandidateRegistration(sampleCandidate);
+    expect(result.success).toBe(true);
+    expect(result.ticketId).toMatch(/^MSS-REG-[0-9]{4,5}$/);
+  });
+
+  it('does NOT pretend WhatsApp message was sent when API credentials are not configured', async () => {
+    const result = await submitCandidateRegistration(sampleCandidate);
+    expect(result.success).toBe(true);
+    // Crucial requirement: Must never fake notification success
+    expect(result.notificationSent).toBe(false);
+    expect(result.notificationStatusMessage).toBeTruthy();
+    expect(result.notificationStatusMessage).toContain('not yet configured');
   });
 });

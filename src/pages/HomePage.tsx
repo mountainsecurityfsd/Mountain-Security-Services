@@ -24,6 +24,7 @@ import {
   AlertCircle
 } from 'lucide-react';
 import { isValidPakistaniPhone } from '../utils/validation';
+import { OwnersHeroShowcase } from '../components/OwnersHeroShowcase';
 
 interface HomePageProps {
   onNavigate: (route: PageRoute, categoryId?: string) => void;
@@ -102,9 +103,9 @@ export const HomePage: React.FC<HomePageProps> = ({
           </div>
 
           {/* Hero Two-Column Grid */}
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-center">
             {/* Main Typography & Action Column */}
-            <div className="lg:col-span-7 flex flex-col gap-5">
+            <div className="lg:col-span-6 flex flex-col gap-5">
               <div className="flex items-center gap-2 text-[#00b4d8] text-xs font-bold tracking-widest uppercase">
                 <Shield className="w-4 h-4 text-[#00b4d8]" />
                 <span>Mountain Security Services (Pvt) Ltd</span>
@@ -180,55 +181,9 @@ export const HomePage: React.FC<HomePageProps> = ({
               </div>
             </div>
 
-            {/* Featured Personnel Photography & Live Tactical Card Column */}
-            <div className="lg:col-span-5 relative">
-              <div className="relative rounded-2xl overflow-hidden shadow-2xl bg-white/5 border border-white/10">
-                {/* Top Command Ribbon */}
-                <div className="absolute top-4 left-4 right-4 z-20 flex items-center justify-between">
-                  <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-md bg-[#0b132b]/90 text-[#00b4d8] text-[11px] font-bold tracking-wider uppercase backdrop-blur-md border border-white/10">
-                    <span className="w-2 h-2 rounded-full bg-[#00b4d8] animate-pulse"></span>
-                    Active Guarding Deployment
-                  </span>
-                  <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded-md bg-[#0077b6] text-white text-[11px] font-bold">
-                    Faisalabad HQ
-                  </span>
-                </div>
-
-                {/* Featured Officer Photo */}
-                <div className="relative h-[440px] sm:h-[480px] w-full">
-                  <img
-                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuAVYEB9ui7lO7cCrUZf4DONu03h4kOWlhTv5oRwhfETOHAUK0FS1I5zio6BsGXk3jx14jwF9yeR3uJkaNC6ooFOXYMiJQEY_927oVSXNQMr_fPWTYzWdGNd8evUGuu_I71F-EKhC7VgYlUuD4s8dp1HDOLy44O1EnCzphW2SM-xjAK3aKInaQcCxAt5MX5OIevKNzD9t4y9VmpZ3ygFIIUc8fiItw6y5alwd1r-ZRjK2Tx50zcNM6yqPA"
-                    alt="Mountain Security Guard in Formal Navy Uniform at Corporate Entrance"
-                    className="w-full h-full object-cover object-top"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-[#0b132b] via-transparent to-transparent opacity-90"></div>
-                </div>
-
-                {/* Inset Telemetry Card Overlap */}
-                <div className="absolute bottom-4 left-4 right-4 bg-[#0b132b]/95 backdrop-blur-md p-4 rounded-xl border border-white/15 shadow-lg">
-                  <div className="flex items-center justify-between mb-2">
-                    <div>
-                      <div className="text-white font-headline text-base font-bold">
-                        Standard Officer Deployment Unit
-                      </div>
-                      <div className="text-slate-300 text-xs">
-                        Station: Faisalabad Corporate Sector
-                      </div>
-                    </div>
-                    <Shield className="w-7 h-7 text-[#00b4d8]" />
-                  </div>
-                  <div className="grid grid-cols-2 gap-2 text-xs text-slate-300 pt-1 border-t border-white/10">
-                    <div className="flex items-center gap-1.5">
-                      <span className="w-1.5 h-1.5 rounded-full bg-[#00b4d8]"></span>
-                      <span>Biometrically Cleared</span>
-                    </div>
-                    <div className="flex items-center gap-1.5">
-                      <span className="w-1.5 h-1.5 rounded-full bg-[#00b4d8]"></span>
-                      <span>Weapon Qualified</span>
-                    </div>
-                  </div>
-                </div>
-              </div>
+            {/* Prominent Company Owners Hero Showcase (Visible Immediately on First Screen) */}
+            <div className="lg:col-span-6 relative">
+              <OwnersHeroShowcase language={language} />
             </div>
           </div>
 
@@ -630,6 +585,29 @@ export const HomePage: React.FC<HomePageProps> = ({
                 <p className="text-xs text-slate-600 mt-0.5">
                   {t.whyChoose.guaranteeDesc}
                 </p>
+              </div>
+            </div>
+
+            {/* Field Guard Deployment Showcase */}
+            <div className="relative rounded-2xl overflow-hidden shadow-lg bg-[#0b132b] text-white border border-slate-700 mt-2">
+              <div className="relative h-52 w-full">
+                <img
+                  src="https://lh3.googleusercontent.com/aida-public/AB6AXuAVYEB9ui7lO7cCrUZf4DONu03h4kOWlhTv5oRwhfETOHAUK0FS1I5zio6BsGXk3jx14jwF9yeR3uJkaNC6ooFOXYMiJQEY_927oVSXNQMr_fPWTYzWdGNd8evUGuu_I71F-EKhC7VgYlUuD4s8dp1HDOLy44O1EnCzphW2SM-xjAK3aKInaQcCxAt5MX5OIevKNzD9t4y9VmpZ3ygFIIUc8fiItw6y5alwd1r-ZRjK2Tx50zcNM6yqPA"
+                  alt="Mountain Security Guard in Formal Navy Uniform at Corporate Entrance"
+                  className="w-full h-full object-cover object-top"
+                  loading="lazy"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#0b132b] via-transparent to-transparent opacity-80 pointer-events-none"></div>
+                <div className="absolute top-3 left-3">
+                  <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded bg-[#0b132b]/90 text-[#00b4d8] text-[10px] font-bold uppercase backdrop-blur-md border border-white/10">
+                    <span className="w-1.5 h-1.5 rounded-full bg-[#00b4d8] animate-pulse"></span>
+                    Active Field Guard Deployment
+                  </span>
+                </div>
+              </div>
+              <div className="p-3 bg-[#0b132b] border-t border-slate-700 flex items-center justify-between text-xs text-slate-300">
+                <span>Station: Faisalabad Corporate Sector</span>
+                <span className="text-[#00b4d8] font-semibold">Biometrically Cleared</span>
               </div>
             </div>
           </div>

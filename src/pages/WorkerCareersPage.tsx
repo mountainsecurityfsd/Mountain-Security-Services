@@ -18,6 +18,7 @@ import {
   ArrowRight
 } from 'lucide-react';
 import { isValidPakistaniPhone, isValidPakistaniCNIC, formatCNIC } from '../utils/validation';
+import { submitCandidateRegistration, CandidateSubmissionResult } from '../services/candidateService';
 
 interface WorkerCareersPageProps {
   onNavigate: (route: PageRoute) => void;
@@ -44,13 +45,14 @@ export const WorkerCareersPage: React.FC<WorkerCareersPageProps> = ({ onNavigate
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [registrationSlip, setRegistrationSlip] = useState<string | null>(null);
+  const [submissionResult, setSubmissionResult] = useState<CandidateSubmissionResult | null>(null);
 
   const handleCnicChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const formatted = formatCNIC(e.target.value);
     setFormData({ ...formData, cnicNumber: formatted });
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setError(null);
 
@@ -76,12 +78,22 @@ export const WorkerCareersPage: React.FC<WorkerCareersPageProps> = ({ onNavigate
 
     setLoading(true);
 
-    setTimeout(() => {
+    try {
+      const result = await submitCandidateRegistration(formData);
       setLoading(false);
-      const regId = `MSS-REG-${Math.floor(1000 + Math.random() * 9000)}`;
-      setRegistrationSlip(regId);
+
+      if (!result.success && result.error) {
+        setError(result.error);
+        return;
+      }
+
+      setSubmissionResult(result);
+      setRegistrationSlip(result.ticketId);
       window.scrollTo({ top: 200, behavior: 'smooth' });
-    }, 600);
+    } catch (submitErr) {
+      setLoading(false);
+      setError('Registration submission encountered an unexpected issue. Please verify your information and retry.');
+    }
   };
 
   return (
@@ -155,9 +167,27 @@ export const WorkerCareersPage: React.FC<WorkerCareersPageProps> = ({ onNavigate
                     <span>Contact Line:</span>
                     <strong className="text-slate-900">{formData.phone}</strong>
                   </div>
-                  <div className="flex justify-between">
+                  <div className="flex justify-between border-b border-slate-200 pb-2">
                     <span>Recruitment Station:</span>
                     <strong className="text-slate-900">2nd Floor, Arshad Center, near General Bus Stand, Faisalabad</strong>
+                  </div>
+                  <div className="flex justify-between pt-1">
+                    <span>Operations Dispatch Alert:</span>
+                    <span className="font-semibold text-right">
+                      {submissionResult?.notificationSent ? (
+                        <span className="text-emerald-700 flex items-center gap-1 font-bold">
+                          <CheckCircle className="w-3.5 h-3.5" /> Dispatched via WhatsApp Cloud API
+                        </span>
+                      ) : submissionResult?.savedToDatabase ? (
+                        <span className="text-amber-700 font-medium">
+                          Saved in Database (WhatsApp pending API credentials)
+                        </span>
+                      ) : (
+                        <span className="text-slate-500 font-medium">
+                          Session Slip Generated (Pending Supabase &amp; WhatsApp setup)
+                        </span>
+                      )}
+                    </span>
                   </div>
                 </div>
 
