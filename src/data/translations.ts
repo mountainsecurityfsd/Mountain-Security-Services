@@ -109,6 +109,8 @@ export const TRANSLATIONS = {
       categoriesHeader: 'Workforce Categories',
       portalsHeader: 'Portals & Access',
       hotlinesHeader: 'Direct Hotlines',
+      followUsHeader: 'Follow Us',
+      followUsDesc: 'Connect with our official channels & workforce announcements:',
       disclaimer: 'Disclaimer: Registration does not guarantee employment; all candidates are strictly subject to credential verification & vetting.',
       rights: '© 2025 Mountain Security Services (Pvt) Ltd. All rights reserved.',
       architecture: 'Engineered by Enterprise Web Architecture'
@@ -224,6 +226,8 @@ export const TRANSLATIONS = {
       categoriesHeader: 'شعبہ جات و کیٹیگریز',
       portalsHeader: 'پورٹلز اور رسائی',
       hotlinesHeader: 'براہ راست ہاٹ لائنز',
+      followUsHeader: 'ہمیں فالو کریں',
+      followUsDesc: 'سرکاری اعلانات اور نوکریوں کی اپ ڈیٹس کے لیے سوشل میڈیا پر جڑیں:',
       disclaimer: 'تنبیہ: رجسٹریشن روزگار کی حتمی ضمانت نہیں، تمام امیدوار قانونی تصدیق و اسکریننگ کے تابع ہیں۔',
       rights: '© 2025 ماؤنٹین سیکیورٹی سروسز (پرائیویٹ) لمیٹڈ۔ جملہ حقوق محفوظ ہیں۔',
       architecture: 'تیار کردہ برائے انٹرپرائز ویب آرکیٹیکچر'

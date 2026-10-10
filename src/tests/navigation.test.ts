@@ -2,6 +2,7 @@ import { describe, it, expect } from 'vitest';
 import { WORKFORCE_CATEGORIES, MSS_LOGO } from '../data/categories';
 import { TRANSLATIONS } from '../data/translations';
 import { WHATSAPP_CONTACTS } from '../data/whatsappContacts';
+import { SOCIAL_LINKS } from '../data/socialLinks';
 import { PageRoute } from '../types';
 
 describe('Navigation and Workforce Services Routing', () => {
@@ -83,5 +84,29 @@ describe('Navigation and Workforce Services Routing', () => {
     WORKFORCE_CATEGORIES.forEach(category => {
       expect(category.imageUrl).toMatch(/^https:\/\/lh3\.googleusercontent\.com\//);
     });
+  });
+
+  it('validates official social media channels including the Facebook page', () => {
+    expect(SOCIAL_LINKS.length).toBeGreaterThan(0);
+    const fbLink = SOCIAL_LINKS.find(s => s.id === 'facebook');
+    expect(fbLink).toBeDefined();
+    expect(fbLink?.url).toBe('https://www.facebook.com/apnarozagar/');
+    expect(fbLink?.name).toBe('Facebook');
+    expect(fbLink?.nameUrdu).toBe('فیس بک');
+    expect(fbLink?.iconType).toBe('facebook');
+    expect(fbLink?.ariaLabel).toContain('Facebook');
+
+    // Verify all configured social links are valid HTTPS URLs with bilingual metadata
+    SOCIAL_LINKS.forEach(link => {
+      expect(link.url).toMatch(/^https:\/\//);
+      expect(link.name).toBeTruthy();
+      expect(link.nameUrdu).toBeTruthy();
+      expect(link.ariaLabel).toBeTruthy();
+      expect(link.ariaLabelUrdu).toBeTruthy();
+    });
+
+    // Verify footer translations include Follow Us
+    expect(TRANSLATIONS.en.footer.followUsHeader).toBe('Follow Us');
+    expect(TRANSLATIONS.ur.footer.followUsHeader).toBe('ہمیں فالو کریں');
   });
 });

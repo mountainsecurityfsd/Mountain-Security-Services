@@ -2,6 +2,7 @@ import React from 'react';
 import { PageRoute, Language } from '../types';
 import { WORKFORCE_CATEGORIES, MSS_LOGO } from '../data/categories';
 import { TRANSLATIONS } from '../data/translations';
+import { SocialLinks } from './SocialLinks';
 
 interface FooterProps {
   onNavigate: (route: PageRoute, categoryId?: string) => void;
@@ -38,7 +39,7 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate, language }) => {
           {/* Column 2: Workforce Categories (12 divisions) */}
           <div className="flex flex-col gap-space-sm">
             <h4 className="font-label-lg text-label-lg uppercase tracking-wider text-on-surface border-l-2 border-secondary pl-2 font-bold">
-              Workforce Categories
+              {t.footer.categoriesHeader}
             </h4>
             <ul className="grid grid-cols-2 gap-x-2 gap-y-1 font-body-sm text-body-sm text-on-surface-variant">
               {WORKFORCE_CATEGORIES.map((cat) => (
@@ -58,7 +59,7 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate, language }) => {
           {/* Column 3: Portals & Access */}
           <div className="flex flex-col gap-space-sm">
             <h4 className="font-label-lg text-label-lg uppercase tracking-wider text-on-surface border-l-2 border-secondary pl-2 font-bold">
-              Portals &amp; Access
+              {t.footer.portalsHeader}
             </h4>
             <div className="flex flex-col gap-space-xs font-body-sm text-body-sm text-on-surface-variant">
               <button
@@ -99,10 +100,10 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate, language }) => {
             </div>
           </div>
 
-          {/* Column 4: Direct Hotlines */}
+          {/* Column 4: Direct Hotlines & Follow Us */}
           <div className="flex flex-col gap-space-sm">
             <h4 className="font-label-lg text-label-lg uppercase tracking-wider text-on-surface border-l-2 border-secondary pl-2 font-bold">
-              Direct Hotlines
+              {t.footer.hotlinesHeader}
             </h4>
             <div className="flex flex-col gap-1.5 font-body-sm text-body-sm text-on-surface-variant">
               <a className="font-bold text-on-surface hover:text-secondary" href="tel:03299200111">
@@ -114,9 +115,22 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate, language }) => {
               <a className="font-bold text-on-surface hover:text-secondary" href="tel:03000266204">
                 +92 300 0266204
               </a>
-              <p className="mt-2 text-label-sm font-label-sm text-on-surface-variant/80 bg-surface-container-low p-2 rounded-lg">
+              <p className="mt-1 text-label-sm font-label-sm text-on-surface-variant/80 bg-surface-container-low p-2 rounded-lg">
                 Strict biometric background verification &amp; NADRA checks performed on all deployments.
               </p>
+            </div>
+
+            {/* Official Follow Us Section */}
+            <div className="mt-2 pt-3 border-t border-outline-variant/30 flex flex-col gap-space-xs">
+              <h4 className="font-label-lg text-label-lg uppercase tracking-wider text-on-surface border-l-2 border-secondary pl-2 font-bold">
+                {t.footer.followUsHeader}
+              </h4>
+              <p className="text-xs text-on-surface-variant">
+                {t.footer.followUsDesc}
+              </p>
+              <div className="pt-1">
+                <SocialLinks language={language} variant="card" />
+              </div>
             </div>
           </div>
         </div>
