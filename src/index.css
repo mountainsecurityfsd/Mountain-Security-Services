@@ -1,0 +1,129 @@
+@import "tailwindcss";
+
+@theme {
+  --color-primary-navy: #0b132b;
+  --color-slate-dark: #0f172a;
+  --color-navy-card: #1c2541;
+  --color-brand-blue: #0077b6;
+  --color-brand-cyan: #00b4d8;
+
+  --color-primary-container: #0b132b;
+  --color-error: #ba1a1a;
+  --color-secondary-fixed-dim: #94ccff;
+  --color-outline: #76767e;
+  --color-tertiary-container: #410007;
+  --color-secondary-fixed: #cde5ff;
+  --color-tertiary: #0b132b;
+  --color-error-container: #ffdad6;
+  --color-on-secondary: #ffffff;
+  --color-on-tertiary-fixed-variant: #92001c;
+  --color-on-error: #ffffff;
+  --color-inverse-on-surface: #eff0ff;
+  --color-surface: #faf8ff;
+  --color-on-secondary-fixed: #001d32;
+  --color-surface-tint: #565d79;
+  --color-on-surface: #0b132b;
+  --color-surface-container: #ebedff;
+  --color-on-tertiary-fixed: #410007;
+  --color-on-primary-fixed: #0b132b;
+  --color-inverse-primary: #bec5e5;
+  --color-surface-container-high: #e3e7ff;
+  --color-surface-variant: #dbe1ff;
+  --color-outline-variant: #c6c6ce;
+  --color-primary: #0b132b;
+  --color-on-surface-variant: #45464d;
+  --color-surface-container-highest: #dbe1ff;
+  --color-on-secondary-container: #004972;
+  --color-on-error-container: #93000a;
+  --color-on-primary: #ffffff;
+  --color-on-background: #0b132b;
+  --color-on-tertiary: #ffffff;
+  --color-surface-dim: #d0d9fd;
+  --color-on-primary-fixed-variant: #3e4660;
+  --color-primary-fixed: #dbe1ff;
+  --color-tertiary-fixed: #ffdad8;
+  --color-on-primary-container: #7b83a0;
+  --color-on-secondary-fixed-variant: #004b74;
+  --color-secondary: #0077b6;
+  --color-on-tertiary-container: #f1414d;
+  --color-inverse-surface: #1c2541;
+  --color-tertiary-fixed-dim: #ffb3b1;
+  --color-secondary-container: #00b4d8;
+  --color-background: #faf8ff;
+  --color-primary-fixed-dim: #bec5e5;
+  --color-surface-container-low: #f2f3ff;
+  --color-surface-container-lowest: #ffffff;
+  --color-surface-bright: #faf8ff;
+
+  --spacing-margin-mobile: 1.25rem;
+  --spacing-margin: 2.5rem;
+  --spacing-gutter-mobile: 1rem;
+  --spacing-space-sm: 0.5rem;
+  --spacing-space-md: 1rem;
+  --spacing-gutter: 1.5rem;
+  --spacing-space-lg: 1.5rem;
+  --spacing-space-2xl: 4rem;
+  --spacing-space-xs: 0.25rem;
+  --spacing-space-xl: 2.5rem;
+
+  --font-label-md: "Plus Jakarta Sans", sans-serif;
+  --font-body-md: "Inter", sans-serif;
+  --font-headline-lg-mobile: "Outfit", sans-serif;
+  --font-headline-lg: "Outfit", sans-serif;
+  --font-headline-sm: "Outfit", sans-serif;
+  --font-body-sm: "Inter", sans-serif;
+  --font-headline-md: "Outfit", sans-serif;
+  --font-display-hero: "Outfit", sans-serif;
+  --font-label-sm: "Plus Jakarta Sans", sans-serif;
+  --font-label-lg: "Plus Jakarta Sans", sans-serif;
+  --font-body-lg: "Inter", sans-serif;
+  --font-display-hero-mobile: "Outfit", sans-serif;
+}
+
+@layer base {
+  html, body {
+    margin: 0;
+    padding: 0;
+  }
+  body {
+    overscroll-behavior: none;
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    color: #111a36;
+    background-color: #faf8ff;
+  }
+  main > :first-child {
+    margin-top: 0 !important;
+  }
+  main > :last-child {
+    margin-bottom: 0 !important;
+  }
+
+  [dir="rtl"] body,
+  [dir="rtl"] {
+    font-family: 'Noto Nastaliq Urdu', 'Inter', system-ui, sans-serif;
+  }
+}
+
+/* Typography Scale utilities matching Stitch specs */
+.text-label-md { font-size: 12px; line-height: 16px; letter-spacing: 0.06em; font-weight: 700; }
+.text-body-md { font-size: 15px; line-height: 24px; font-weight: 400; }
+.text-headline-lg-mobile { font-size: 28px; line-height: 36px; letter-spacing: -0.01em; font-weight: 700; }
+.text-headline-lg { font-size: 40px; line-height: 48px; letter-spacing: -0.02em; font-weight: 700; }
+.text-headline-sm { font-size: 22px; line-height: 30px; font-weight: 600; }
+.text-body-sm { font-size: 13px; line-height: 20px; font-weight: 400; }
+.text-headline-md { font-size: 28px; line-height: 36px; letter-spacing: -0.01em; font-weight: 600; }
+.text-display-hero { font-size: 56px; line-height: 64px; letter-spacing: -0.02em; font-weight: 800; }
+.text-label-sm { font-size: 10px; line-height: 14px; letter-spacing: 0.08em; font-weight: 700; }
+.text-label-lg { font-size: 14px; line-height: 20px; letter-spacing: 0.04em; font-weight: 600; }
+.text-body-lg { font-size: 18px; line-height: 28px; font-weight: 400; }
+.text-display-hero-mobile { font-size: 36px; line-height: 44px; letter-spacing: -0.01em; font-weight: 800; }
+
+.font-headline { font-family: 'Outfit', sans-serif; }
+.font-body { font-family: 'Inter', sans-serif; }
+.font-label { font-family: 'Plus Jakarta Sans', sans-serif; }
+.font-urdu { font-family: 'Noto Nastaliq Urdu', 'Inter', sans-serif; }
+
+/* Custom scrollbar matching Stitch */
+::-webkit-scrollbar {
+  display: none;
+}
