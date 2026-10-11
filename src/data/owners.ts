@@ -1,57 +1,57 @@
 import owner1Photo from '../assets/owners/owner-1.jpg';
-import owner2Photo from '../assets/owners/owner-2.jpg';
+import { OWNER_PHOTO_BASE64 } from './ownerImageBase64';
 
 export interface CompanyOwner {
   id: string;
-  ownerNumber: number;
-  /**
-   * Editable text placeholder: [OWNER NAME]
-   * Replace with actual name once provided.
-   */
   name: string;
-  /**
-   * Editable text placeholder: [DESIGNATION]
-   * Replace with actual designation (e.g. Chief Executive Officer, Managing Director, Director) once provided.
-   */
   designation: string;
   nameUrdu: string;
   designationUrdu: string;
   imageSrc: string;
+  imagePath: string;
   altText: string;
-  badge: string;
-  badgeUrdu: string;
+  badge?: string;
+  badgeUrdu?: string;
   bioNote?: string;
   bioNoteUrdu?: string;
 }
 
+/**
+ * ============================================================================
+ * COMPANY OWNER CONFIGURATION (SINGLE CLEARLY EDITABLE LOCATION)
+ * ============================================================================
+ * Edit the owner name and designation here:
+ */
+export const OWNER_DETAILS = {
+  name: 'Colonel Retd. Muhammad Rafiq Jam',
+  designation: 'Company Owner',
+  nameUrdu: 'کرنل (ریٹائرڈ) محمد رفیق جام',
+  designationUrdu: 'کمپنی کے مالک',
+  /**
+   * Verified GitHub Pages and production asset path for Owner 1:
+   */
+  imagePath: '/Mountain-Security-Services/assets/owner-1-Cv64p7Lg.jpg',
+  base64Image: OWNER_PHOTO_BASE64
+};
+
+/**
+ * Active company owners list — single company owner
+ */
 export const COMPANY_OWNERS: CompanyOwner[] = [
   {
     id: 'owner-1',
-    ownerNumber: 1,
-    name: '[OWNER NAME]',
-    designation: '[DESIGNATION]',
-    nameUrdu: '[مالک کا نام 1]',
-    designationUrdu: '[عہدہ]',
-    imageSrc: owner1Photo,
-    altText: 'Owner 1 — Mountain Security Services (Pvt) Ltd',
-    badge: 'Company Owner / Director',
-    badgeUrdu: 'کمپنی ڈائریکٹر / مالک',
-    bioNote: 'Executive Leadership & Strategic Operations',
-    bioNoteUrdu: 'ایگزیکٹو لیڈرشپ و اسٹریٹجک آپریشنز'
-  },
-  {
-    id: 'owner-2',
-    ownerNumber: 2,
-    name: '[OWNER NAME]',
-    designation: '[DESIGNATION]',
-    nameUrdu: '[مالک کا نام 2]',
-    designationUrdu: '[عہدہ]',
-    imageSrc: owner2Photo,
-    altText: 'Owner 2 — Mountain Security Services (Pvt) Ltd',
-    badge: 'Company Owner / Director',
-    badgeUrdu: 'کمپنی ڈائریکٹر / مالک',
-    bioNote: 'Corporate Administration & Client Relations',
-    bioNoteUrdu: 'انتظامی امور و کلائنٹ ریلیشنز'
+    name: OWNER_DETAILS.name,
+    designation: OWNER_DETAILS.designation,
+    nameUrdu: OWNER_DETAILS.nameUrdu,
+    designationUrdu: OWNER_DETAILS.designationUrdu,
+    // Embedded photo data URL ensures instant display on dev, preview, and GitHub Pages without 404s
+    imageSrc: OWNER_PHOTO_BASE64,
+    imagePath: OWNER_DETAILS.imagePath,
+    altText: 'Colonel Retd. Muhammad Rafiq Jam — Company Owner, Mountain Security Services (Pvt) Ltd',
+    badge: 'Company Owner',
+    badgeUrdu: 'کمپنی کے مالک',
+    bioNote: 'Executive Command & Operational Leadership',
+    bioNoteUrdu: 'ایگزیکٹو کمانڈ و اسٹریٹجک لیڈرشپ'
   }
 ];
 
@@ -75,4 +75,3 @@ export const COMPANY_PROFILE = {
   addressUrdu: OFFICIAL_OFFICE_ADDRESS_URDU,
   googleMapsUrl: GOOGLE_MAPS_OFFICE_URL
 };
-

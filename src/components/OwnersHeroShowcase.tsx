@@ -1,7 +1,7 @@
 import React from 'react';
-import { COMPANY_OWNERS, COMPANY_PROFILE } from '../data/owners';
+import { COMPANY_OWNERS, COMPANY_PROFILE, OWNER_DETAILS } from '../data/owners';
 import { Language } from '../types';
-import { Shield, Award, CheckCircle } from 'lucide-react';
+import { Shield, CheckCircle, Award, Check } from 'lucide-react';
 import { SafeImage } from './SafeImage';
 
 interface OwnersHeroShowcaseProps {
@@ -14,11 +14,22 @@ export const OwnersHeroShowcase: React.FC<OwnersHeroShowcaseProps> = ({
   className = ''
 }) => {
   const isUrdu = language === 'ur';
+  const owner = COMPANY_OWNERS[0];
+
+  // Candidates for GitHub Pages, local dev, and production builds
+  const fallbackImages = [
+    owner.imageSrc,
+    OWNER_DETAILS.base64Image,
+    OWNER_DETAILS.imagePath,
+    `${import.meta.env.BASE_URL}assets/owner-1-Cv64p7Lg.jpg`,
+    './assets/owner-1-Cv64p7Lg.jpg',
+    '/assets/owner-1-Cv64p7Lg.jpg'
+  ];
 
   return (
     <div 
       className={`relative rounded-2xl bg-[#0f172a]/95 backdrop-blur-md border border-[#0077b6]/30 shadow-2xl p-5 sm:p-6 text-white ${className}`}
-      aria-label="Company Owners Showcase"
+      aria-label="Company Owners & Directorate"
     >
       {/* Top Corporate Header within Card */}
       <div className="flex flex-col gap-1.5 pb-4 mb-4 border-b border-white/10">
@@ -44,62 +55,62 @@ export const OwnersHeroShowcase: React.FC<OwnersHeroShowcaseProps> = ({
         </div>
       </div>
 
-      {/* Two Owners Side-by-Side (Desktop / Tablet) & Vertically Stacked (Mobile) */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-5">
-        {COMPANY_OWNERS.map((owner) => {
-          return (
-            <div
-              key={owner.id}
-              className="group flex flex-col bg-[#0b132b]/80 rounded-xl overflow-hidden border border-white/10 hover:border-[#00b4d8]/50 transition-all duration-200 shadow-md"
-            >
-              {/* Separate Portrait Image Asset Frame with Consistent Dimensions */}
-              <div className="relative aspect-[4/5] w-full bg-[#0b132b] overflow-hidden border-b border-white/10">
-                <SafeImage
-                  src={owner.imageSrc}
-                  alt={owner.altText}
-                  fallbackText={`${isUrdu ? owner.nameUrdu : owner.name} — ${isUrdu ? owner.designationUrdu : owner.designation}`}
-                  className="w-full h-full object-cover object-top transition-transform duration-300 group-hover:scale-[1.02]"
-                />
-                
-                {/* Subtle Corporate Lighting Gradient */}
-                <div className="absolute inset-0 bg-gradient-to-t from-[#0b132b] via-transparent to-transparent opacity-60 pointer-events-none" />
+      {/* Single Professional Profile Card for Colonel Retd. Muhammad Rafiq Jam */}
+      <div className="bg-[#0b132b]/85 rounded-xl border border-white/10 hover:border-[#00b4d8]/50 transition-all duration-200 shadow-md p-4 sm:p-5">
+        <div className="flex flex-col sm:flex-row gap-5 items-center sm:items-stretch">
+          {/* Portrait Image Frame with Consistent Dimensions & Subtle Corporate Gradient */}
+          <div className="relative w-44 sm:w-48 shrink-0 aspect-[4/5] rounded-xl overflow-hidden border border-white/10 bg-[#0b132b] shadow-inner group">
+            <SafeImage
+              src={owner.imageSrc}
+              fallbackSrcs={fallbackImages}
+              alt={owner.altText}
+              fallbackText={`${isUrdu ? owner.nameUrdu : owner.name} — ${isUrdu ? owner.designationUrdu : owner.designation}`}
+              className="w-full h-full object-cover object-top transition-transform duration-300 group-hover:scale-[1.02]"
+            />
+            {/* Subtle Corporate Lighting Gradient */}
+            <div className="absolute inset-0 bg-gradient-to-t from-[#0b132b]/80 via-transparent to-transparent pointer-events-none" />
+          </div>
 
-                {/* Corner Owner Badge */}
-                <div className="absolute top-2.5 left-2.5 z-10">
-                  <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded bg-[#0b132b]/90 text-white text-[10px] font-bold tracking-wider uppercase backdrop-blur-sm border border-white/15 shadow-sm">
-                    <Award className="w-3 h-3 text-[#00b4d8]" />
-                    <span>{isUrdu ? `مالک ${owner.ownerNumber}` : `Owner ${owner.ownerNumber}`}</span>
-                  </span>
-                </div>
+          {/* Professional Details Section (Clean, Non-repetitive) */}
+          <div className="flex-1 flex flex-col justify-between text-center sm:text-left pt-1">
+            <div>
+              {/* Badge */}
+              <div className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded bg-[#0077b6]/20 border border-[#00b4d8]/30 text-[#00b4d8] text-[11px] font-bold tracking-wider uppercase mb-2.5">
+                <Award className="w-3.5 h-3.5 text-[#00b4d8]" />
+                <span>{isUrdu ? 'قیادت و سرپرستی' : 'Executive Leadership'}</span>
               </div>
 
-              {/* Exact Text Placeholders Required Under Each Photograph */}
-              <div className="p-3.5 sm:p-4 flex flex-col gap-1.5 bg-[#0f172a]/90">
-                {/* Placeholder Headline: [OWNER NAME] — [DESIGNATION] */}
-                <div className="flex flex-col">
-                  <div className="font-headline text-sm sm:text-base font-bold text-white tracking-wide">
-                    {isUrdu ? owner.nameUrdu : owner.name}
-                  </div>
-                  <div className="text-xs font-semibold text-[#00b4d8] tracking-wider uppercase">
-                    {isUrdu ? owner.designationUrdu : owner.designation}
-                  </div>
-                </div>
+              {/* Owner Name: Colonel Retd. Muhammad Rafiq Jam */}
+              <h4 className="font-headline text-lg sm:text-xl font-bold text-white tracking-tight leading-snug">
+                {isUrdu ? owner.nameUrdu : owner.name}
+              </h4>
 
-                {/* Explicit Combined Placeholder Format (Exact Prompt Match) */}
-                <div className="pt-1.5 border-t border-white/10 text-[11px] text-slate-300 font-mono flex items-center justify-between">
-                  <span className="text-slate-400">
-                    {isUrdu ? `مالک ${owner.ownerNumber}:` : `Owner ${owner.ownerNumber}:`}
-                  </span>
-                  <span className="text-[#cde5ff] font-semibold">
-                    {isUrdu 
-                      ? `${owner.nameUrdu} — ${owner.designationUrdu}` 
-                      : `${owner.name} — ${owner.designation}`}
-                  </span>
-                </div>
+              {/* Designation: Company Owner */}
+              <p className="text-xs sm:text-sm font-semibold text-[#00b4d8] tracking-wider uppercase mt-1">
+                {isUrdu ? owner.designationUrdu : owner.designation}
+              </p>
+
+              {/* Bio & Strategic Command Note */}
+              <p className="text-xs text-slate-300 mt-2.5 leading-relaxed">
+                {isUrdu 
+                  ? 'ایگزیکٹو کمانڈ، اسٹریٹجک پالیسی اور سیکیورٹی آپریشنز کی براہ راست نگرانی۔'
+                  : 'Executive Command, strategic policy governance, and direct tactical supervision over corporate security operations.'}
+              </p>
+            </div>
+
+            {/* Credential Indicators */}
+            <div className="pt-3 mt-3 border-t border-white/10 grid grid-cols-2 gap-2 text-[11px] text-slate-300">
+              <div className="flex items-center gap-1.5">
+                <Check className="w-3.5 h-3.5 text-[#00b4d8] shrink-0" />
+                <span>{isUrdu ? 'آپریشنل کمانڈ' : 'Operational Command'}</span>
+              </div>
+              <div className="flex items-center gap-1.5">
+                <Check className="w-3.5 h-3.5 text-[#00b4d8] shrink-0" />
+                <span>{isUrdu ? 'کارپوریٹ گورننس' : 'Corporate Governance'}</span>
               </div>
             </div>
-          );
-        })}
+          </div>
+        </div>
       </div>
 
       {/* Bottom Authenticity & Operations Guarantee Note */}
